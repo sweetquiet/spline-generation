@@ -1,3 +1,3 @@
 # Spline Generation
 
-Generate splines and curves to create paths between points.
+Generate some splines and curves to create paths between points.
