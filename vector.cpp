@@ -43,6 +43,28 @@ void Vector::set_y(double iy) {
   this->y = iy;
 }
 
+double Vector::distanceTo(Vector next) {
+  return sqrt((next.get_x()-this->get_x())*(next.get_x()-this->get_x())+(next.get_y()-this->get_y())*(next.get_y()-this->get_y()));
+}
+
+bool Vector::isBetween(Vector v1, Vector v2) {
+  if (v1.get_x() > v2.get_x()) 
+    if(this->get_x() > v1.get_x() || this->get_x() < v2.get_x()) return false;
+  else if (v1.get_x() < v2.get_x()) 
+    if (this->get_x() < v1.get_x() || this->get_x() > v2.get_x()) return false;
+  else
+    if (this->get_x() != v1.get_x()) return false;
+
+  if (v1.get_y() > v2.get_y()) 
+    if (this->get_y() > v1.get_y() || this->get_y() < v2.get_y()) return false;
+  else if (v1.get_y() < v2.get_y()) 
+    if (this->get_y() < v1.get_y() || this->get_y() > v2.get_y()) return false;
+  else
+    if (this->get_y() != v1.get_y()) return false;
+
+  return true;
+}
+
 ostream& operator<<(ostream& os, Vector v) {
   os << v.to_string();
   return os;
@@ -66,4 +88,12 @@ Vector operator+(Vector v1, Vector v2) {
 Vector operator-(Vector v1, Vector v2) {
   Vector out = Vector(v1.get_x()-v2.get_x(), v1.get_y()-v2.get_y());
   return out;
+}
+
+bool operator==(Vector v1, Vector v2) {
+  return v1.get_x()==v2.get_x() && v1.get_y()==v2.get_y();
+}
+
+bool operator !=(Vector v1, Vector v2) {
+  return !(v1 == v2);
 }

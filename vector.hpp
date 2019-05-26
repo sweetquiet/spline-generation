@@ -15,6 +15,8 @@ class Vector {
     double get_magnitude();
     string to_string();
     Vector get_normalized();
+    double distanceTo(Vector next);
+    bool isBetween(Vector v1, Vector v2);
   private:
     double x;
     double y;
@@ -25,5 +27,7 @@ Vector operator*(double mult, Vector v);
 Vector operator*(Vector v, double mult);
 Vector operator+(Vector v1, Vector v2);
 Vector operator-(Vector v1, Vector v2);
+bool operator==(Vector v1, Vector v2);
+bool operator !=(Vector v1, Vector v2);
 
 #endif // _vector_h_
